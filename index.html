@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17265f" />
+  <meta name="description" content="Aprenda as partes do corpo em inglês brincando." />
+  <title>Body Adventure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <a class="brand" href="#" aria-label="Body Adventure — início"><span class="brand-mark">B</span><span>BODY<br><b>ADVENTURE</b></span></a>
+    </header>
+
+    <main>
+      <section id="home" class="screen active">
+        <div class="intro-copy">
+          <span class="eyebrow">INGLÊS É UMA AVENTURA!</span>
+          <h1>Conheça o seu<br><em>super corpo!</em></h1>
+          <p>Aprenda os nomes das partes do corpo em inglês, ouça a pronúncia e depois teste sua memória.</p>
+          <button class="primary" data-go="learn">Começar aventura <span>→</span></button>
+        </div>
+        <div class="character-stage">
+          <div class="spark s1">✦</div><div class="spark s2">●</div><div class="spark s3">✦</div>
+          <img class="character mascot" src="mascot.png" alt="Personagem infantil animado acenando" />
+          <div class="speech">HELLO! 👋</div>
+          <div class="ground"></div>
+        </div>
+      </section>
+
+      <section id="learn" class="screen">
+        <div class="section-head">
+          <div><span class="eyebrow">MODO APRENDER</span><h2>Partes do corpo</h2><p>Clique em um nome para ouvir a pronúncia.</p></div>
+        </div>
+        <div class="learn-board">
+          <div class="word-list" id="leftWords"></div>
+          <div class="mini-stage">
+            <div class="body-part-display" id="bodyPartDisplay" role="img" aria-label="Imagem da cabeça">
+              <img class="body-part-image" src="images/body/head.png" alt="" aria-hidden="true" draggable="false">
+              <span class="look-label">OLHE E APRENDA!</span>
+            </div>
+            <div class="active-word simple-name" id="activeWord"><strong>HEAD</strong></div>
+          </div>
+          <div class="word-list" id="rightWords"></div>
+        </div>
+        <div class="nav-actions"><button class="ghost" data-go="home">← Voltar</button><button class="primary" data-go="games">Próximo: jogos <span>→</span></button></div>
+      </section>
+
+      <section id="games" class="screen">
+        <div class="section-head"><div><span class="eyebrow">HORA DE JOGAR</span><h2>Escolha um desafio</h2></div></div>
+        <div class="game-menu">
+          <button class="game-choice memory-choice" data-game="memory"><span class="game-icon">🧠</span><small>JOGO 01</small><strong>Jogo da Memória</strong><p>Encontre os pares de imagens iguais.</p></button>
+          <button class="game-choice audio-choice" data-game="audio"><span class="game-icon">🎧</span><small>JOGO 02</small><strong>Ouça e Escolha</strong><p>Escute a palavra e marque a resposta certa.</p></button>
+          <button class="game-choice build-choice" data-game="build"><span class="game-icon">🧩</span><small>JOGO 03</small><strong>Monte o Boneco</strong><p>Ouça e arraste a parte correta para montar o boneco.</p></button>
+        </div>
+        <div class="nav-actions"><button class="ghost" data-go="learn">← Voltar</button></div>
+      </section>
+
+      <section id="memory" class="screen game-screen">
+        <div class="section-head"><div><span class="eyebrow">JOGO DA MEMÓRIA</span><h2>Encontre os pares</h2><p>Vire as cartas e encontre duas imagens iguais.</p></div><div class="memory-status"><span class="counter">Fase <b id="memoryPhase">1</b> / 9</span></div></div>
+        <div class="memory-grid" id="memoryGrid"></div>
+        <div class="game-message" id="memoryMessage" aria-live="polite"></div>
+        <div class="phase-success" id="phaseSuccess" role="status" aria-live="assertive"><span>✅</span><strong>Fase concluída!</strong></div>
+        <div class="memory-complete is-hidden" id="memoryComplete"><span aria-hidden="true">🏆</span><h3>CONCLUÍDO!</h3><p>Você completou todas as 9 fases.</p><button class="primary" data-go="games">Voltar para os jogos</button></div>
+        <div class="nav-actions" id="memoryGameNav"><button class="ghost" data-go="games">← Jogos</button><div class="memory-actions"><button class="ghost" id="restartMemory">Recomeçar fase</button></div></div>
+      </section>
+
+      <section id="audio" class="screen game-screen">
+        <div class="section-head"><div><span class="eyebrow">OUÇA E ESCOLHA</span><h2>Que parte do corpo é essa?</h2></div><span class="counter" id="quizCounter">1 / 6</span></div>
+        <div class="quiz-card" id="quizCard"><button class="listen-button" id="listenQuiz" aria-label="Ouvir palavra">🔊<span>Ouvir novamente</span></button><div class="quiz-options" id="quizOptions"></div><div class="game-message" id="quizMessage" aria-live="polite"></div></div>
+        <div class="phase-success" id="quizSuccess" role="status" aria-live="assertive"><span>✅</span><strong>Acertou!</strong></div>
+        <div class="memory-complete is-hidden" id="quizComplete"><span aria-hidden="true">🏆</span><h3>CONCLUÍDO!</h3><p>Você completou as 6 pronúncias.</p><button class="primary" data-go="games">Voltar para os jogos</button></div>
+        <div class="nav-actions" id="quizNav"><button class="ghost" data-go="games">← Jogos</button></div>
+      </section>
+
+      <section id="build" class="screen game-screen">
+        <div class="section-head"><div><span class="eyebrow">MONTE O BONECO</span><h2>Ouça e arraste</h2><p>Arraste a imagem pronunciada. Cada acerto acrescentará uma parte ao boneco.</p></div><span class="counter">Parte <b id="buildCounter">1</b> / 8</span></div>
+        <div class="build-game" id="buildBoard">
+          <div class="build-pieces" id="buildPieces" aria-label="Partes disponíveis"></div>
+          <div class="build-center">
+            <button class="listen-button build-listen" id="listenBuild" aria-label="Ouvir novamente">🔊<span>Ouvir novamente</span></button>
+            <div class="build-doll" id="buildDoll" aria-label="Área para montar o boneco">
+              <span class="empty-doll-message">ARRASTE A PEÇA AQUI</span>
+              <div class="build-reveal reveal-head" data-build-slot="HEAD"><img src="images/body/build-head.png" alt="Cabeça sem olhos" style="transform: scale(0.50);"></div>
+              <div class="build-reveal reveal-face reveal-eyes" data-build-slot="EYES"><img src="images/body/build-eyes.png" alt="Olhos" style="transform: scale(0.50);"></div>
+              <div class="build-reveal reveal-face reveal-mouth" data-build-slot="MOUTH"><img src="images/body/build-complete-head.png" alt="Cabeça completa com olhos e boca" style="transform: scale(0.50);"></div>
+              <div class="build-reveal reveal-shoulders-piece" data-build-slot="SHOULDERS"><img src="images/body/build-shoulders.png" alt="Pescoço e camisa azul" style="transform: scale(0.50) translateY(-85px);"></div>
+              <div class="build-reveal reveal-arms" data-build-slot="ARMS"><img src="images/body/build-arms.png" alt="Braços" style="transform: scale(0.55) translateY(-85px);"></div>
+              <div class="build-reveal reveal-hands" data-build-slot="HAND"><img src="images/body/build-hands.png" alt="Mãos" style="transform: scale(0.44) translateY(-110px);"></div>
+              <div class="build-reveal reveal-legs" data-build-slot="LEGS"><img src="images/body/build-legs.png" alt="Pernas" style="transform: scale(0.40) translateY(100px);"></div>
+              <div class="build-reveal reveal-feet" data-build-slot="FOOT"><img src="images/body/build-feet.png" alt="Pés" style="transform: scale(0.41) translateY(100px);"></div>
+          </div>
+          </div>
+        </div>
+        <div class="game-message" id="buildMessage" aria-live="polite"></div>
+        <div class="phase-success" id="buildSuccess" role="status" aria-live="assertive"><span>✅</span><strong>Parte correta!</strong></div>
+        <div class="memory-complete build-complete is-hidden" id="buildComplete"><img src="images/body/complete-doll.png" alt="Boneco completo"><h3>CONCLUÍDO!</h3><p>Você montou o boneco completo.</p><button class="primary" data-go="games">Voltar para os jogos</button></div>
+        <div class="nav-actions" id="buildNav"><button class="ghost" data-go="games">← Jogos</button><button class="ghost" id="restartBuild">Recomeçar</button></div>
+      </section>
+    </main>
+    <footer><span>Aprenda • Ouça • Jogue</span><span>Feito para aprender inglês brincando</span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
